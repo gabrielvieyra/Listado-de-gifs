@@ -1,38 +1,35 @@
-let btnCargarListado = document.getElementById('btn-cargar-listado');
-btnCargarListado.addEventListener('click', cargarListadoGifs);
+const btnCargarListado = document.querySelector("#btn-cargar-listado");
 
-let apiKey = 'khYjRcs5FrIybMjGIbhp6kFiKG09W8Xt';
+btnCargarListado.addEventListener("click", cargarListadoGifs);
 
-let url = 'https://api.giphy.com/v1/gifs/search';
+const apiKey = "khYjRcs5FrIybMjGIbhp6kFiKG09W8Xt";
+const url = "https://api.giphy.com/v1/gifs/search";
 
-async function getGifs(){
+async function getGifs() {
+    let terminoBuscado = document.querySelector("#txt-busqueda").value;
 
-	let terminoBuscado = document.getElementById('txt-busqueda').value;
+    let response = await fetch(
+        url + `?api_key=${apiKey}&q=${terminoBuscado}&limit=10`
+    );
 
-	url += `?api_key=${apiKey}&q=${terminoBuscado}&limit=16`;
+    if (response.status === 200) {
+        let datos = await response.json();
 
-	let response = await fetch( url );
-	let datos    = await response.json();
-	
-	return datos;
+        return datos;
+    } else {
+        alert("Algo salio mal");
+    }
 }
 
-function cargarListadoGifs(){
-	
-	getGifs().then(	mostrarGifs );
-}
-				
-function mostrarGifs( gifs ){
-
-	let listadoGifs = document.getElementById('listado-gifs');
-
-	listadoGifs.innerHTML = ''; 
-
-	for( gif of gifs.data){
-		listadoGifs.innerHTML += `<img class="img-buscador" src="${gif.images.original.url}">`;
-	}
-	
+function cargarListadoGifs() {
+    getGifs().then(mostrarGifs);
 }
 
+function mostrarGifs(gifs) {
+    let listadoGifs = document.querySelector("#listado-gifs");
+    listadoGifs.innerHTML = "";
 
-
+    for (gif of gifs.data) {
+        listadoGifs.innerHTML += `<img class="img-buscador" src="${gif.images.original.url}">`;
+    }
+}
