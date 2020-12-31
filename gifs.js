@@ -30,6 +30,6 @@ function mostrarGifs(gifs) {
     listadoGifs.innerHTML = "";
 
     for (gif of gifs.data) {
-        listadoGifs.innerHTML += `<img class="img-buscador" src="${gif.images.original.url}">`;
+        listadoGifs.innerHTML += `<img class="m-2" src="${gif.images.original.url}">`;
     }
 }
