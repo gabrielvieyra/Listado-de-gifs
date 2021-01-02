@@ -4,8 +4,6 @@ Proyecto corto hecho con JavaScript puro donde podes buscar tus gifs favoritos, 
 
 ## El stack que maneje para generar este proyecto fue:
 
----
-
 -   HTML
 -   CSS
 -   Bootstrap
