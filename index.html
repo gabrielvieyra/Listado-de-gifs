@@ -1,43 +1,52 @@
 <!DOCTYPE html>
 
-	<html lang="es">
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Gifs</title>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>Gifs</title>
+        <!-- Font awesome -->
+        <script
+            src="https://kit.fontawesome.com/62b3551efa.js"
+            crossorigin="anonymous"
+        ></script>
 
-		<!-- Font awesome -->
-		<script src="https://kit.fontawesome.com/62b3551efa.js" crossorigin="anonymous"></script>
+        <!-- favicon -->
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/ico" />
 
-		<!-- favicon -->
-		<link rel="shortcut icon" href="img/favicon.ico" type="image/ico">
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+        <link href="css/style.css" rel="stylesheet" />
+    </head>
 
-		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-		<link href="css/style.css" rel="stylesheet">
+    <body class="min-vh-100">
+        <div class="container">
+            <div class="row">
+                <div class="col d-flex flex-column">
+                    <div class="d-flex my-4 w-100 justify-content-center">
+                        <input
+                            class="border rounded mr-2 px-3 py-2"
+                            id="txt-busqueda"
+                            type="text"
+                            autocomplete="off"
+                            placeholder="Busca tus gifs favoritos"
+                        />
+                        <button
+                            class="btn d-flex align-items-center justify-content-center shadow-none"
+                            id="btn-cargar-listado"
+                        >
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div id="spinner" style="height: 750px"></div>
+                    <article id="listado-gifs"></article>
+                </div>
+            </div>
+        </div>
 
-	</head>
+        <script src="vendor/jquery/jquery-3.4.1.min.js"></script>
+        <script src="vendor/popper/popper.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 p-2 mb-2 d-flex flex-row align-items-center justify-content-center">
-					<input class="border rounded mr-2" id="txt-busqueda" name="txt-busqueda" type="text" method="post" max-length="100" autocomplete="off" placeholder="Listado de GIFs">
-                           
-                    <button class="btn" id="btn-cargar-listado"> 
-                        <i class="fas fa-search"></i>
-					</button>
-				</div>
-				
-				<article id="listado-gifs"></article>
-				
-			</div>
-		</div>
-		
-		<script src="vendor/jquery/jquery-3.4.1.min.js"></script>
-		<script src="vendor/popper/popper.min.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-		
-		<script src="gifs.js"></script>
-	</body>
-
+        <script src="gifs.js"></script>
+    </body>
 </html>

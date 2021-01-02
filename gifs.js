@@ -1,4 +1,6 @@
 const btnCargarListado = document.querySelector("#btn-cargar-listado");
+const contenedorSpinner = document.querySelector("#spinner");
+const listadoGifs = document.querySelector("#listado-gifs");
 
 btnCargarListado.addEventListener("click", cargarListadoGifs);
 
@@ -8,11 +10,16 @@ const url = "https://api.giphy.com/v1/gifs/search";
 async function getGifs() {
     let terminoBuscado = document.querySelector("#txt-busqueda").value;
 
+    mostrarSpinner();
+
     let response = await fetch(
         url + `?api_key=${apiKey}&q=${terminoBuscado}&limit=10`
     );
 
     if (response.status === 200) {
+        limpiarPantalla(contenedorSpinner);
+        esconder(contenedorSpinner);
+
         let datos = await response.json();
 
         return datos;
@@ -26,10 +33,38 @@ function cargarListadoGifs() {
 }
 
 function mostrarGifs(gifs) {
-    let listadoGifs = document.querySelector("#listado-gifs");
-    listadoGifs.innerHTML = "";
+    limpiarPantalla(listadoGifs);
 
     for (gif of gifs.data) {
-        listadoGifs.innerHTML += `<img class="img-buscador" src="${gif.images.original.url}">`;
+        listadoGifs.innerHTML += `<img class="m-2" src="${gif.images.original.url}">`;
     }
+}
+
+function limpiarPantalla(param) {
+    param.innerHTML = "";
+}
+
+function esconder(param) {
+    param.classList.add("esconder");
+}
+
+function mostrarSpinner() {
+    limpiarPantalla(listadoGifs);
+
+    if (contenedorSpinner.classList.contains("esconder")) {
+        contenedorSpinner.classList.remove("esconder");
+    }
+
+    contenedorSpinner.innerHTML = `
+    <div
+    class="d-flex justify-content-center align-items-center h-100"
+>
+    <div
+        class="spinner-border text-white"
+        role="status"
+    >
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+    `;
 }
