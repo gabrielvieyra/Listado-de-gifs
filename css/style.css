@@ -15,3 +15,17 @@ body {
 .esconder {
     display: none;
 }
+
+/* media queries */
+
+@media (max-width: 575.98px) {
+    #txt-busqueda {
+        width: 100%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #txt-busqueda {
+        width: 350px;
+    }
+}
