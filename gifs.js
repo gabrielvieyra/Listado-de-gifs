@@ -13,7 +13,7 @@ async function getGifs() {
     mostrarSpinner();
 
     let response = await fetch(
-        url + `?api_key=${apiKey}&q=${terminoBuscado}&limit=10`
+        url + `?api_key=${apiKey}&q=${terminoBuscado}&limit=12`
     );
 
     if (response.status === 200) {
@@ -36,7 +36,11 @@ function mostrarGifs(gifs) {
     limpiarPantalla(listadoGifs);
 
     for (gif of gifs.data) {
-        listadoGifs.innerHTML += `<img class="m-2" src="${gif.images.original.url}">`;
+        listadoGifs.innerHTML += `
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
+                <img class="w-100" src="${gif.images.original.url}">
+            </div>
+        `;
     }
 }
 
