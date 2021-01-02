@@ -4,11 +4,14 @@ body {
 
 #txt-busqueda {
     width: 500px;
-    height: 38px;
     outline: none;
 }
 
 #btn-cargar-listado {
     color: #222429;
     background-color: #e6e2e1;
+}
+
+.esconder {
+    display: none;
 }
